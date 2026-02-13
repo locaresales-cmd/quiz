@@ -206,6 +206,7 @@ st.markdown("""
     }
     .card-container {
         background-color: white;
+        color: #1f2937; /* Force dark text color for readability in dark mode */
         padding: 2rem;
         border-radius: 1rem;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
@@ -214,6 +215,7 @@ st.markdown("""
     .result-correct {
         border-left: 4px solid #22c55e;
         background-color: #f0fdf4;
+        color: #1f2937; /* Force dark text */
         padding: 1rem;
         border-radius: 0.5rem;
         margin-bottom: 1rem;
@@ -221,6 +223,7 @@ st.markdown("""
     .result-wrong {
         border-left: 4px solid #ef4444;
         background-color: #fef2f2;
+        color: #1f2937; /* Force dark text */
         padding: 1rem;
         border-radius: 0.5rem;
         margin-bottom: 1rem;
