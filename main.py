@@ -409,19 +409,25 @@ def show_result_screen():
         css_class = "result-correct" if is_correct else "result-wrong"
         icon = "✅" if is_correct else "❌"
         
+        # Prepare optional HTML for incorrect answers
+        your_answer_html = ""
+        if not is_correct:
+            your_answer_html = f'<div><span style="color: #6b7280;">あなたの回答:</span> <span style="font-weight: bold; color: #b91c1c; text-decoration: line-through;">{r["selected"]}</span></div>'
+
+        # Use textwrap.dedent or just remove indentation to avoid Markdown code block formatting
         st.markdown(f"""
-        <div class="{css_class}">
-            <div style="font-size: 0.8rem; font-weight: bold; color: #6b7280;">Q.{i+1} {q['category']} {icon}</div>
-            <div style="font-weight: 500; margin: 0.5rem 0;">{q['meaning']}</div>
-            <div style="display: flex; gap: 1rem; font-size: 0.9rem;">
-                <div>
-                    <span style="color: #6b7280;">正解:</span>
-                    <span style="font-weight: bold; color: #15803d;">{q['term']}</span>
-                </div>
-                {'' if is_correct else f'<div><span style="color: #6b7280;">あなたの回答:</span> <span style="font-weight: bold; color: #b91c1c; text-decoration: line-through;">{r["selected"]}</span></div>'}
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+<div class="{css_class}">
+<div style="font-size: 0.8rem; font-weight: bold; color: #6b7280;">Q.{i+1} {q['category']} {icon}</div>
+<div style="font-weight: 500; margin: 0.5rem 0;">{q['meaning']}</div>
+<div style="display: flex; gap: 1rem; font-size: 0.9rem;">
+<div>
+<span style="color: #6b7280;">正解:</span>
+<span style="font-weight: bold; color: #15803d;">{q['term']}</span>
+</div>
+{your_answer_html}
+</div>
+</div>
+""", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
 # Main Routing
